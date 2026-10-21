@@ -316,8 +316,7 @@ export default function Certifications() {
         </div>
 
         <p className="mt-5 text-xs leading-5 text-gray-500">
-          Certificate files are provided for viewing. Additional verification
-          links can be added when available.
+          Certificate files are provided for viewing.
         </p>
       </div>
     </section>
