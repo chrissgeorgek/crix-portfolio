@@ -9,10 +9,11 @@ import Certifications from './sections/Certifications.jsx'
 import Experience from './sections/Experience.jsx'
 import Education from './sections/Education.jsx'
 import Contact from './sections/Contact.jsx'
+// import ExplorePrompt from './components/ExplorePrompt.jsx'
 
 function HomePage() {
 return (
-<> <Hero /> <About /> <Skills /> <Projects /> <Contact />
+<> <Hero />  <About /> <Skills /> <Projects /> <Contact /> 
 </>
 )
 }
