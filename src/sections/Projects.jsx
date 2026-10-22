@@ -20,8 +20,28 @@ const projects = [
     liveUrl: 'https://stemconnectacademy.com/',
     githubUrl: '',
   },
+
   {
     number: '02',
+    title: 'Personal Portfolio Website',
+    category: 'Frontend Development · Personal Project',
+    description:
+      'Designed and developed a personal portfolio to showcase my technical skills, professional experience, education, and software development projects through a responsive, modern interface.',
+    technologies: [
+      'React.js',
+      'Vite',
+      'Tailwind CSS',
+      'Framer Motion',
+      'JavaScript',
+      'Vercel',
+    ],
+    accent: 'from-violet-500/20 to-fuchsia-500/10',
+    liveUrl: 'https://chrissgeorgek.vercel.app/',
+    githubUrl: '',
+  },
+
+  {
+    number: '03',
     title: 'Saha Learning Platform',
     category: 'Full-Stack EdTech',
     description:
@@ -38,7 +58,7 @@ const projects = [
     githubUrl: '',
   },
   {
-    number: '03',
+    number: '04',
     title: 'Training Management System',
     category: 'Web Application',
     description:
@@ -49,7 +69,7 @@ const projects = [
     githubUrl: '',
   },
   {
-    number: '04',
+    number: '05',
     title: 'Parking Slot Detection',
     category: 'Computer Vision',
     description:
