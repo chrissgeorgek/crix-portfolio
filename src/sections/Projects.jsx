@@ -2,57 +2,63 @@ import { motion } from 'framer-motion'
 import { ArrowUpRight, Layers3, Globe } from 'lucide-react'
 
 const projects = [
-{
-number: '01',
-title: 'Saha Learning Platform',
-category: 'Full-Stack EdTech',
-description:
-'An educational platform with role-based access for students, teachers, and administrators, featuring REST APIs, JWT authentication, and real-time chat.',
-technologies: ['React', 'Django REST', 'PostgreSQL', 'Redis', 'WebSockets'],
-accent: 'from-purple-500/20 to-blue-500/10',
-liveUrl: '',
-githubUrl: '',
-},
-{
-number: '02',
-title: 'Training Management System',
-category: 'Web Application',
-description:
-'A training management solution supporting 60+ users with role-based access, attendance management, batch allocation, activity tracking, and reporting.',
-technologies: ['Django', 'PostgreSQL', 'Python'],
-accent: 'from-blue-500/20 to-cyan-500/10',
-liveUrl: '',
-githubUrl: '',
-},
-{
-number: '03',
-title: 'Parking Slot Detection',
-category: 'Computer Vision',
-description:
-'A computer vision project designed to detect parking slots using YOLOv3, with a previously reported detection accuracy of 92%.',
-technologies: ['YOLOv3', 'Python', 'Django', 'PHP'],
-accent: 'from-fuchsia-500/20 to-purple-500/10',
-liveUrl: '',
-githubUrl: '',
-},
-{
-number: '04',
-title: 'STEM CONNECT ACADEMY',
-category: 'EdTech Website · Client Project',
-description:
-'Designed and developed a responsive online tuition website for Grades 5–12, featuring Supabase-powered review moderation, SEO optimization, WhatsApp enquiries, and direct contact options.',
-technologies: [
-'React',
-'Vite',
-'Tailwind CSS',
-'Framer Motion',
-'Supabase',
-'Vercel',
-],
-accent: 'from-rose-500/15 to-purple-500/10',
-liveUrl: 'https://stemconnectacademy.com/',
-githubUrl: '',
-},
+  {
+    number: '01',
+    title: 'STEM CONNECT ACADEMY',
+    category: 'EdTech Website · Client Project',
+    description:
+      'Designed and developed a responsive online tuition website for Grades 5–12, featuring Supabase-powered review moderation, SEO optimization, WhatsApp enquiries, and direct contact options.',
+    technologies: [
+      'React',
+      'Vite',
+      'Tailwind CSS',
+      'Framer Motion',
+      'Supabase',
+      'Vercel',
+    ],
+    accent: 'from-rose-500/15 to-purple-500/10',
+    liveUrl: 'https://stemconnectacademy.com/',
+    githubUrl: '',
+  },
+  {
+    number: '02',
+    title: 'Saha Learning Platform',
+    category: 'Full-Stack EdTech',
+    description:
+      'An educational platform with role-based access for students, teachers, and administrators, featuring REST APIs, JWT authentication, and real-time chat.',
+    technologies: [
+      'React',
+      'Django REST',
+      'PostgreSQL',
+      'Redis',
+      'WebSockets',
+    ],
+    accent: 'from-purple-500/20 to-blue-500/10',
+    liveUrl: '',
+    githubUrl: '',
+  },
+  {
+    number: '03',
+    title: 'Training Management System',
+    category: 'Web Application',
+    description:
+      'A training management solution supporting 60+ users with role-based access, attendance management, batch allocation, activity tracking, and reporting.',
+    technologies: ['Django', 'PostgreSQL', 'Python'],
+    accent: 'from-blue-500/20 to-cyan-500/10',
+    liveUrl: '',
+    githubUrl: '',
+  },
+  {
+    number: '04',
+    title: 'Parking Slot Detection',
+    category: 'Computer Vision',
+    description:
+      'A computer vision project designed to detect parking slots using YOLOv3, with a previously reported detection accuracy of 92%.',
+    technologies: ['YOLOv3', 'Python', 'Django', 'PHP'],
+    accent: 'from-fuchsia-500/20 to-purple-500/10',
+    liveUrl: '',
+    githubUrl: '',
+  },
 ]
 
 export default function Projects() {
@@ -138,7 +144,7 @@ Selected work </p>
                     className="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2.5 text-xs font-semibold text-black transition-colors hover:bg-purple-300"
                   >
                     <Globe size={15} />
-                    Live Demo
+                    Live Site
                     <ArrowUpRight size={14} />
                   </a>
                 )}
