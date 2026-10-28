@@ -15,7 +15,7 @@ export default function ExplorePrompt() {
           className="text-purple-400"
         />
 
-        <span>Ready to Explore?</span>
+        {/* <span>Ready to Explore?</span> */}
       </div>
 
       {/* <motion.div

@@ -142,7 +142,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col gap-4 border-t border-white/[0.08] py-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs leading-6 text-gray-500">
-            © {currentYear} CRIX. All rights reserved.
+            © {currentYear} CHRISSG. All rights reserved.
           </p>
 
           <p className="text-xs text-gray-500">
