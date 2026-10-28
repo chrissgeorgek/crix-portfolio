@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Menu, X, ArrowUpRight } from 'lucide-react'
 import GooeyNav from './GooeyNav.jsx'
+import ProfileCard from './ProfileCard.jsx'
 
 const links = [
   { name: 'Home', href: '/' },
@@ -16,7 +17,9 @@ const links = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [profileOpen, setProfileOpen] = useState(false)
 
+  const profileRef = useRef(null)
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -27,10 +30,37 @@ export default function Navbar() {
 
   useEffect(() => {
     setMenuOpen(false)
+    setProfileOpen(false)
   }, [location.pathname])
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (
+        profileRef.current &&
+        !profileRef.current.contains(event.target)
+      ) {
+        setProfileOpen(false)
+      }
+    }
+
+    const handleEscape = (event) => {
+      if (event.key === 'Escape') {
+        setProfileOpen(false)
+      }
+    }
+
+    document.addEventListener('pointerdown', handleOutsideClick)
+    document.addEventListener('keydown', handleEscape)
+
+    return () => {
+      document.removeEventListener('pointerdown', handleOutsideClick)
+      document.removeEventListener('keydown', handleEscape)
+    }
+  }, [])
 
   const navigateTo = (href) => {
     setMenuOpen(false)
+    setProfileOpen(false)
     navigate(href)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -44,28 +74,67 @@ export default function Navbar() {
   }
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-8">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-2xl border border-white/[0.09] bg-[#0b0b10]/90 px-5 py-4 shadow-2xl shadow-black/20 backdrop-blur-xl">
+    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-8 sm:pt-4">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-3 rounded-2xl border border-white/[0.09] bg-[#0b0b10]/90 px-3 py-3 shadow-2xl shadow-black/20 backdrop-blur-xl sm:gap-4 sm:px-5 sm:py-4">
 
-        {/* Logo */}
-        <button
-          type="button"
-          onClick={() => navigateTo('/')}
-          className="group flex shrink-0 items-center gap-3"
-          aria-label="Go to homepage"
-        >
-          <img
-            src="/profile.jpeg"
-            alt="Profile"
-            className="h-10 w-10 shrink-0 rounded-xl border border-purple-400/30 object-cover shadow-lg shadow-purple-500/20 transition-transform group-hover:scale-105"
-          />
+        {/* Left profile: portrait + logo */}
+        <div ref={profileRef} className="relative z-[70] shrink-0">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <button
+              type="button"
+              onClick={() => setProfileOpen((previous) => !previous)}
+              aria-label="Open Chriss George profile card"
+              aria-expanded={profileOpen}
+              className={`relative h-9 w-9 shrink-0 overflow-hidden rounded-xl border transition-all duration-300 sm:h-10 sm:w-10 ${
+                profileOpen
+                  ? 'border-purple-400 shadow-lg shadow-purple-500/30'
+                  : 'border-purple-400/30 shadow-lg shadow-purple-500/20 hover:border-purple-400'
+              }`}
+            >
+              <img
+                src="/profile.jpeg"
+                alt="Chriss George"
+                className="h-full w-full object-cover object-top transition-transform duration-300 hover:scale-110"
+              />
 
-          <span className="font-heading text-lg font-bold tracking-tight text-white">
-            CHRISSG<span className="text-purple-400">.</span>
-          </span>
-        </button>
+              <span className="absolute bottom-0.5 right-0.5 h-2.5 w-2.5 rounded-full border-2 border-[#0b0b10] bg-emerald-400" />
+            </button>
 
-        {/* Desktop Gooey Navigation */}
+            <button
+              type="button"
+              onClick={() => navigateTo('/')}
+              className="whitespace-nowrap font-heading text-base font-bold tracking-tight text-white sm:text-lg"
+              aria-label="Go to homepage"
+            >
+              CHRISSG<span className="text-purple-400">.</span>
+            </button>
+          </div>
+
+          {/* Interactive React Bits ProfileCard */}
+          {profileOpen && (
+            <div className="absolute left-0 top-full mt-3 w-[min(340px,calc(100vw-1.5rem))] max-h-[calc(100dvh-100px)] overflow-y-auto overflow-x-hidden rounded-2xl shadow-2xl shadow-black/50">
+              <ProfileCard
+                name="Chriss George"
+                title="Software Engineer | Python Full Stack Developer"
+                handle="chrissgeorgek"
+                status="Available for opportunities"
+                contactText="Contact"
+                avatarUrl="/profile.jpeg"
+                holo={0.8}
+                glare={0.5}
+                tiltStrength={12}
+                parallax={8}
+                radius={16}
+                enableTilt
+                showUserInfo
+                theme="dark"
+                onContactClick={() => navigateTo('/contact')}
+              />
+            </div>
+          )}
+        </div>
+
+        {/* Desktop navigation */}
         <div className="hidden min-w-0 flex-1 justify-center lg:flex">
           <GooeyNav
             items={links.map((link) => ({
@@ -88,7 +157,7 @@ export default function Navbar() {
           />
         </div>
 
-        {/* Resume */}
+        {/* Desktop resume */}
         <a
           href="/Chriss_George.pdf"
           download="Chriss_George_Resume.pdf"
@@ -98,15 +167,15 @@ export default function Navbar() {
           <ArrowUpRight size={16} />
         </a>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile menu button */}
         <button
           type="button"
           onClick={() => setMenuOpen((previous) => !previous)}
-          className="flex shrink-0 items-center gap-2 rounded-xl border border-white/10 px-3 py-2.5 text-white transition-colors hover:border-purple-400/30 hover:bg-purple-500/10 lg:hidden"
+          className="flex shrink-0 items-center gap-2 rounded-xl border border-white/10 px-2.5 py-2.5 text-white transition-colors hover:border-purple-400/30 hover:bg-purple-500/10 sm:px-3 lg:hidden"
           aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
           aria-expanded={menuOpen}
         >
-          <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-gray-400">
+          <span className="hidden text-[10px] font-semibold uppercase tracking-[0.12em] text-gray-400 sm:inline">
             {menuOpen ? 'Close' : 'More About Me'}
           </span>
 
@@ -114,7 +183,7 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile Navigation */}
+      {/* Mobile navigation */}
       {menuOpen && (
         <div className="mx-auto mt-2 max-w-7xl rounded-2xl border border-white/10 bg-[#111116] p-4 shadow-2xl lg:hidden">
           <div className="grid grid-cols-2 gap-2">

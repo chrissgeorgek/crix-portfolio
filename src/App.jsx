@@ -7,6 +7,8 @@ import LoadingIntro from './components/LoadingIntro.jsx'
 import MicroSlats from './components/MicroSlats.jsx'
 import CircularCarousel from './components/CircularCarousel.jsx'
 import ExplorePrompt from './components/ExplorePrompt.jsx'
+import GradientText from './components/GradientText.jsx'
+import TechText from './components/TechText.jsx'
 
 import About from './sections/About.jsx'
 import Skills from './sections/Skills.jsx'
@@ -93,16 +95,49 @@ function LandingPage() {
           PORTFOLIO · 2026
         </p> */}
 
-        <h1 className="w-full text-3xl font-bold leading-[1.08] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
-          Explore my
-          <span className="mt-1 block bg-gradient-to-r from-purple-400 via-fuchsia-300 to-blue-400 bg-clip-text text-transparent">
-            digital world.
-          </span>
-        </h1>
+<h1 className="w-full text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
+  <GradientText
+    colors={['#5227FF', '#FF9FFC', '#B497CF']}
+    animationSpeed={8}
+    variant="linear"
+    glow={0}
+    className="inline-flex flex-col items-center"
+  >
+    <span>Explore my</span>
+    <span>digital world.</span>
+  </GradientText>
+</h1>
 
-        <p className="mx-auto mt-2 max-w-2xl px-2 text-xs leading-5 text-gray-300 sm:mt-3 sm:text-sm sm:leading-6">
-          Developer, problem solver, and lifelong learner. Explore my work, skills, experience, and journey.
-        </p>
+<div className="mx-auto mt-2 h-[100px] w-full max-w-2xl sm:mt-3 sm:h-[120px]">
+  <TechText
+    text="Developer, problem solver, and lifelong learner."
+    fontWeight={500}
+    fontSize={28}
+    reveal="letter"
+    dashLength={4}
+    dashGap={2}
+    specks={8}
+    intro="none"
+    clickKick
+    guides={false}
+    fontFamily=""
+    letterSpacing={-0.02}
+    accentColor="#B497CF"
+    reach={120}
+    softness={0.7}
+    lineStyle="dashed"
+    strokeWidth={1.2}
+    speed={1}
+    bounce={0.4}
+    selection={false}
+    labels={false}
+    color="#D1D5DB"
+    align="center"
+    draggable={false}
+    sweep
+    className="h-full w-full"
+  />
+</div>
       </div>
 
       {/* Circular portfolio carousel */}
