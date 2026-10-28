@@ -9,14 +9,14 @@ export default function ExplorePrompt() {
       transition={{ duration: 0.7, delay: 0.5 }}
       className="flex flex-col items-center gap-3 text-center"
     >
-      <div className="flex items-center gap-2 text-sm text-gray-300">
+      {/* <div className="flex items-center gap-2 text-sm text-gray-300">
         <MousePointer2
           size={16}
           className="text-purple-400"
         />
 
-        {/* <span>Ready to Explore?</span> */}
-      </div>
+        <span>Ready to Explore?</span>
+      </div> */}
 
       {/* <motion.div
         animate={{ y: [0, 5, 0] }}

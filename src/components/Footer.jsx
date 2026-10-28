@@ -47,7 +47,7 @@ export default function Footer() {
               </span>
 
               <span className="text-xl font-bold tracking-tight text-white">
-                CRIX<span className="text-purple-400">.</span>
+                CHRISSG<span className="text-purple-400">.</span>
               </span>
             </Link>
 
